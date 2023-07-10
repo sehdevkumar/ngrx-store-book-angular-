@@ -15,11 +15,11 @@ export class BookService {
 
 
   onAddBook(book:PostBook) {
-     return this.httpClient.request('post' , 'books',null,book)
+     return this.httpClient.request('post' , 'books/',null,book)
   }
 
   onGetAllBooks() {
-     return this.httpClient.request('get','books')
+     return this.httpClient.request('get','books/')
   }
 
 }

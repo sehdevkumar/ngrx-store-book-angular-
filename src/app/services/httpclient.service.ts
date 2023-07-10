@@ -28,7 +28,7 @@ export class HttpclientService {
         params: param,
         headers: headers,
         responseType: 'json',
-        withCredentials: true,
+        withCredentials: false,
       })
     );
 

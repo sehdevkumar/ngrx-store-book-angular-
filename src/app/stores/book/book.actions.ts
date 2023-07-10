@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { GetBook, PostBook } from "../typings/api.typings";
+import { GetBook, PostBook } from "src/app/typings/api.typings";
 
 
 

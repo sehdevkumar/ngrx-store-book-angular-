@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { GetBook, PostBook } from "../typings/api.typings";
 import { addBook, addBookFailure, addBookSuccess, getAllBooks, getAllBooksFailure, getBooksSuccess, setAllBooks } from "./book.actions";
+import { PostBook, GetBook } from "src/app/typings/api.typings";
 
 
 

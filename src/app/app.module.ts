@@ -7,22 +7,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookService } from './stores-services/book.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { bookReducer } from './stores/book.reducers';
-import { BookEffects } from './stores/book.effects';
+
+import { RegisterAuthorsComponent } from './book-views/register-authors/register-authors.component';
+import { AddBooksComponent } from './book-views/add-books/add-books.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { bookReducer } from './stores/book/book.reducers';
+import { BookEffects } from './stores/book/book.effects';
+import { authorReducers } from './stores/author/author.reducers';
+import { AuthorService } from './stores-services/author.service';
+import { AuthorEffects } from './stores/author/author.effects';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterAuthorsComponent,
+    AddBooksComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({
       books: bookReducer,
+      authors:authorReducers
     }),
-    EffectsModule.forRoot([BookEffects])
+    EffectsModule.forRoot([BookEffects,AuthorEffects]),
+    ReactiveFormsModule
   ],
-  providers: [HttpclientService,BookService],
+  providers: [HttpclientService,BookService,AuthorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

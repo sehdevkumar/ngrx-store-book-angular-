@@ -1,10 +1,6 @@
-import {getAllBooks } from './stores/book.actions';
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-
-import { BookState } from './stores/book.reducers';
-import { selectGetBooks } from './stores/book.selectors';
-
+import { Store } from '@ngrx/store';
+import { getAllBooks } from './stores/book/book.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,29 +8,17 @@ import { selectGetBooks } from './stores/book.selectors';
 })
 export class AppComponent implements OnInit {
 
-   constructor(private store:Store<BookState>) {}
+   constructor(private store:Store) {}
 
 
 
-  //  Get All Books Data
   ngOnInit(): void {
     this.onGetAllBooksData()
-
-    this.store.pipe(select(appState=>  appState.getBooks)).subscribe(res=> {
-      console.log(res)
-    })
   }
-
 
   onGetAllBooksData() {
      this.store.dispatch(getAllBooks())
-
-     this.store.pipe(select(selectGetBooks)).subscribe(res=> {
-       console.log(res)
-     })
-
   }
-
 
 }
 
