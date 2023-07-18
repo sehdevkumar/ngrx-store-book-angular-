@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { postAuthorAction } from 'src/app/stores/author/author.actions';
-import { selectGetAuthorFailure, selectPostAuthor } from 'src/app/stores/author/author.selectors';
+import { Store, select } from '@ngrx/store';
+import { take } from 'rxjs';
+import { getAuthors, postAuthorAction, postAuthorSuccess } from 'src/app/stores/author/author.actions';
+import { selectGetAuhtors, selectGetAuthorFailure, selectPostAuthor, selectPostAuthorSuccess } from 'src/app/stores/author/author.selectors';
 import { PostAuthor } from 'src/app/typings/api.typings';
 
 @Component({
@@ -10,7 +11,7 @@ import { PostAuthor } from 'src/app/typings/api.typings';
   templateUrl: './register-authors.component.html',
   styleUrls: ['./register-authors.component.scss']
 })
-export class RegisterAuthorsComponent {
+export class RegisterAuthorsComponent implements OnInit {
 
   authorForm:FormGroup
 
@@ -24,21 +25,18 @@ export class RegisterAuthorsComponent {
        })
 
 
-       this.onInitStoreSubscription()
 
+
+  }
+  ngOnInit(): void {
+    this.store.dispatch(getAuthors())
   }
 
 
   onSubmit() {
     const payload:PostAuthor = this.authorForm?.value
     this.store?.dispatch(postAuthorAction({postAuhtor:payload}))
-  }
-
-
-  onInitStoreSubscription() {
-     this.store.select(selectPostAuthor)?.subscribe(res=> {
-        console.log(res)
-     })
+    this.store.dispatch(getAuthors())
   }
 
 }

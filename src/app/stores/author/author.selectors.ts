@@ -14,17 +14,18 @@ export const selectPostAuthor = createSelector(
   (state: AuthorsState) => state.postAuthor
 );
 
-// Retrieve the getBooks data
+export const selectPostAuthorSuccess = createSelector(createAuthorFeatireSelector,(state)=>state);
+
 export const selectGetAuhtors = createSelector(
   createAuthorFeatireSelector,
   (state: AuthorsState) => state.getAuhtors
 );
 
 
-// Retrieve the postBook data
 export const selectGetAuthorFailure = createSelector(
   createAuthorFeatireSelector,
   (state: AuthorsState) => state.error
 );
+
 
 

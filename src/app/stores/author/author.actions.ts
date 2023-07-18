@@ -15,7 +15,7 @@ export const postAuthorSuccess = createAction('Author Successfully Posted')
 
 export const getAuthors = createAction('Get All Authors')
 
-export const setAllAuthors  = createAction('Set All Authors',props<{authors:GetAuthor[]}>())
+export const setAllAuthors  = createAction('Set All Authors',props<{getAuhtors:GetAuthor[]}>())
 
 export const getAuthorsFailure = createAction('Auhor Get Failed',props<{error:any}>())
 

@@ -16,12 +16,14 @@ import { BookEffects } from './stores/book/book.effects';
 import { authorReducers } from './stores/author/author.reducers';
 import { AuthorService } from './stores-services/author.service';
 import { AuthorEffects } from './stores/author/author.effects';
+import { ViewAuthorsComponent } from './book-views/view-authors/view-authors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterAuthorsComponent,
-    AddBooksComponent
+    AddBooksComponent,
+    ViewAuthorsComponent
   ],
   imports: [
     BrowserModule,

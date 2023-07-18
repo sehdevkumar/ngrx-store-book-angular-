@@ -5,7 +5,6 @@ import { getAuthors, getAuthorsFailure, postAuthorAction, postAuthorFailure, pos
 
 export interface AuthorsState {
    getAuhtors: GetAuthor[],
-   setAuthors: GetAuthor[],
    postAuthor:PostAuthor,
    error:any
 }
@@ -13,7 +12,6 @@ export interface AuthorsState {
 
 const initialState:AuthorsState = {
   getAuhtors: [],
-  setAuthors: [],
   postAuthor: undefined,
   error: undefined
 }
@@ -28,6 +26,6 @@ export const authorReducers = createReducer(
 
  on(getAuthors,(state) => ({...state,error:null})),
  on(getAuthorsFailure,(state,{error}) => ({...state, error:error})),
- on(setAllAuthors,(state,{authors}) => ({...state,authors:authors ,error:null})),
+ on(setAllAuthors,(state,{getAuhtors}) => ({...state,getAuhtors:getAuhtors ,error:null})),
 
 )

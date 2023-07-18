@@ -1,0 +1,12 @@
+
+<ng-container *ngFor="let author of authorsList$ | async as error">
+<ng-container *ngIf="!error">Error</ng-container>
+  <div class="list-group mt-3">
+    <div href="#" class="list-group-item list-group-item-action active" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{author?.first_name}} {{author?.last_name}}</h5>
+      </div>
+      <p class="mb-1">{{author?.about}}</p>
+    </div>
+  </div>
+</ng-container>
