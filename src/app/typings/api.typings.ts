@@ -30,3 +30,11 @@ export interface GetAuthor {
   about: string;
   email: string;
 }
+
+
+export interface TabsInterface {
+   tabName:string;
+   tabIndex:number;
+   tabClass:string;
+   activate:boolean;
+}

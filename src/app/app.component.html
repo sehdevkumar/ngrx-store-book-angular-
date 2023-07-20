@@ -1,15 +1,19 @@
+<app-tab-navbar></app-tab-navbar>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-       <app-register-authors></app-register-authors>
+
+    {{getSelectedTab?.tabName}}
+    <div *ngIf="getSelectedTab?.tabIndex === 1" class="row">
+      <div class="col-sm-8 shadow-lg mt-lg-4 rounded-2">
+         <app-register-authors></app-register-authors>
+      </div>
+      <div class="col-sm-4  mt-lg-4">
+        <app-view-authors></app-view-authors>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <app-view-authors></app-view-authors>
+
+    <div *ngIf="getSelectedTab?.tabIndex === 2" class="row">
+      <div class="col-sm">col-sm</div>
+      <div class="col-sm">col-sm</div>
+      <div class="col-sm">col-sm</div>
     </div>
-  </div>
-  <!-- <div class="row">
-    <div class="col-sm">col-sm</div>
-    <div class="col-sm">col-sm</div>
-    <div class="col-sm">col-sm</div>
-  </div> -->
 </div>

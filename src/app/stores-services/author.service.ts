@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpclientService } from '../services/httpclient.service';
-import { PostAuthor } from '../typings/api.typings';
+import { GetAuthor, PostAuthor } from '../typings/api.typings';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,12 @@ export class AuthorService {
 
   onGetAllAuthors() {
      return this.http.request('get','authors/')
+  }
+
+  onDeleteAuthor(param:GetAuthor) {
+    let params = new HttpParams()
+    params = params.append('id',param?.id+'')
+    return this.http.request('delete','authors/',params)
   }
 
 }

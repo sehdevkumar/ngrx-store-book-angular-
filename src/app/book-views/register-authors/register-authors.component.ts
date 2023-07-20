@@ -30,13 +30,19 @@ export class RegisterAuthorsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.store.dispatch(getAuthors())
+    this.store.select(selectGetAuthorFailure).subscribe(res=> {
+       console.log(res,'failure')
+    })
   }
 
 
   onSubmit() {
     const payload:PostAuthor = this.authorForm?.value
-    this.store?.dispatch(postAuthorAction({postAuhtor:payload}))
-    this.store.dispatch(getAuthors())
+    this.store.dispatch(postAuthorAction({postAuhtor:payload}))
+    setTimeout(()=> {
+      this.store.dispatch(getAuthors())
+      this.authorForm.reset()
+    },500)
   }
 
 }

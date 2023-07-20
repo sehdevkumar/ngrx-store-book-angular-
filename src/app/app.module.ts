@@ -17,20 +17,24 @@ import { authorReducers } from './stores/author/author.reducers';
 import { AuthorService } from './stores-services/author.service';
 import { AuthorEffects } from './stores/author/author.effects';
 import { ViewAuthorsComponent } from './book-views/view-authors/view-authors.component';
+import { TabNavbarComponent } from './containers/tab-navbar/tab-navbar.component';
+import { tabReducer } from './stores/tabs/tab.reducers';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterAuthorsComponent,
     AddBooksComponent,
-    ViewAuthorsComponent
+    ViewAuthorsComponent,
+    TabNavbarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({
       books: bookReducer,
-      authors:authorReducers
+      authors:authorReducers,
+      tabs:tabReducer
     }),
     EffectsModule.forRoot([BookEffects,AuthorEffects]),
     ReactiveFormsModule
