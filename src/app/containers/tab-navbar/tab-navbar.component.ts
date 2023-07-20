@@ -18,19 +18,19 @@ export class TabNavbarComponent {
       tabName:'Add Author',
       tabIndex:1,
       tabClass:'active',
-      activate:true
+      activate:false
     },
     {
       tabName:'Add Book',
       tabIndex:2,
       tabClass:'active',
-      activate:false
+      activate:true
     }
    ]
 
 
   onSwitchTabs(tab:TabsInterface) {
-      this.tabs.map(t=> t.activate = false)
+      this.tabs.forEach(t=> t.activate = false)
       tab.activate  = true
       this.store.dispatch(tabAction({tab:{...tab}}))
   }

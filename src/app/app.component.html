@@ -1,7 +1,6 @@
 <app-tab-navbar></app-tab-navbar>
 <div class="container">
 
-    {{getSelectedTab?.tabName}}
     <div *ngIf="getSelectedTab?.tabIndex === 1" class="row">
       <div class="col-sm-8 shadow-lg mt-lg-4 rounded-2">
          <app-register-authors></app-register-authors>
@@ -11,9 +10,11 @@
       </div>
     </div>
 
-    <div *ngIf="getSelectedTab?.tabIndex === 2" class="row">
-      <div class="col-sm">col-sm</div>
-      <div class="col-sm">col-sm</div>
-      <div class="col-sm">col-sm</div>
+    <div *ngIf="getSelectedTab?.tabIndex === 2 || !getSelectedTab" class="row">
+      <div class="col-sm-8 shadow-lg mt-lg-4 rounded-2">
+          <app-add-books></app-add-books>
+      </div>
+      <div class="col-sm-4  mt-lg-4">col-sm</div>
+
     </div>
 </div>

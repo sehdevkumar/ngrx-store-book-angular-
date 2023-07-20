@@ -5,4 +5,4 @@ import { TabsInterface } from "src/app/typings/api.typings";
 
 const featureSelector = createFeatureSelector<TabsInterface>('tabs')
 
-export const tabSelector = createSelector(featureSelector,(state:TabsInterface)=> state);
+export const tabSelector = createSelector(featureSelector,(state)=> state);

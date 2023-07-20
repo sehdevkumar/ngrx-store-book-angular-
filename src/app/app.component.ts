@@ -4,6 +4,7 @@ import { getAllBooks } from './stores/book/book.actions';
 import { tabSelector } from './stores/tabs/tab.selectors';
 import { Observable } from 'rxjs';
 import { TabsInterface } from './typings/api.typings';
+import { SubSink } from 'subsink';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +12,7 @@ import { TabsInterface } from './typings/api.typings';
 })
 export class AppComponent implements OnInit ,OnDestroy{
 
+  subsSink:SubSink = new SubSink()
 
   selectedTab:TabsInterface
 
@@ -23,12 +25,15 @@ export class AppComponent implements OnInit ,OnDestroy{
 
 
   ngOnInit(): void {
-    this.onGetAllBooksData()
 
-   this.store.select(tabSelector)
-   .subscribe(res=> {
-    this.selectedTab = res
-   })
+    const s1 =   this.store.select(tabSelector)
+    .subscribe(res=> {
+      this.selectedTab = (res as any)?.tab
+      console.log(this.selectedTab)
+    })
+
+  this.onGetAllBooksData()
+  this.subsSink.add(s1);
   }
 
   onGetAllBooksData() {
@@ -37,7 +42,7 @@ export class AppComponent implements OnInit ,OnDestroy{
 
 
   ngOnDestroy(): void {
-
+      this.subsSink.unsubscribe()
   }
 }
 
